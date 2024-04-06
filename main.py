@@ -8,9 +8,6 @@ serialPort = serial.Serial(
     parity="N",
     stopbits=1,
     timeout=0.03)
-
-# Read the returned hexadecimal
-# paper_status = serialPort.read().hex()
 paper_status=""
 while paper_status=="":
     get_paper_roll_sensor_status = serialPort.write(b'\x10\x04\x02')
@@ -25,4 +22,4 @@ elif paper_status == "32":
 elif paper_status == "36":
     print('Hood is opened')
 else:
-    print(f'other unset values{paper_status}')
+    print('other unset values')
